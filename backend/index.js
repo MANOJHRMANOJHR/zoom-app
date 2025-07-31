@@ -20,7 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cook());
 app.use(
     cors({
-      origin: "http://localhost:5173", // Replace with your frontend URL
+     // origin: "http://localhost:5173", // Replace with your frontend URL
+     origin: "*",
       credentials: true, // Allow credentials (cookies, authorization headers)
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // List all methods explicitly
       allowedHeaders: ["Content-Type", "Authorization"], // Optional: Add allowed headers
