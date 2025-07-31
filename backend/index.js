@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { createioserver } = require('./controllers/socket');
@@ -28,7 +29,7 @@ app.use(
 
 app.use('/', require('./routers/userroutes'));
 
-mongoose.connect("mongodb://localhost:27017/myzoomdatabase").then((res) => { //database creation using connect /myzoomdatabase
+mongoose.connect(process.env.dbhost).then((res) => { //database creation using connect /myzoomdatabase
     console.log("Connected to the database ", res.connection.host);
 }
 ).catch((err) => {
