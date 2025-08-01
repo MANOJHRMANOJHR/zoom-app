@@ -24,7 +24,7 @@ const AuthPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = isLogin ? "http://localhost:3000/login" : "http://localhost:3000/register";
+      const url = isLogin ? `${import.meta.env.SERVER}/login` : `${import.meta.env.SERVER}/register`;
       const response = await axios.post(url, formData);
 
       if (isLogin) {

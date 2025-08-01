@@ -19,7 +19,7 @@ export default function History() {
     useEffect(() => {
         const fetchHistory = async () => {
             try {
-               let request = await client.post("http://localhost:3000/get_all_activity");
+               let request = await client.post(`${import.meta.env.SERVER}/get_all_activity`);
                 setMeetings(request.data);
             } catch(err){
                 console.log(err);

@@ -20,7 +20,7 @@ const AppRoutes = () => {
     const checkAuth = async () => {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.post('http://localhost:3000/auth', { withCredentials: true });
+        const res = await axios.post(`${import.meta.env.SERVER}/auth`, { withCredentials: true });
         if (res.status === 200) {
           setok(true);
           const decodedToken = jwtDecode(res.data.token1);

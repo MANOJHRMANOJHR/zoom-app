@@ -12,7 +12,7 @@ function Home() {
    // await addToUserHistory(meetingCode);
    // navigate(`/${meetingCode}`);
 try{
-   let res = await axios.post("http://localhost:3000/add_to_activity", {
+   let res = await axios.post(`${import.meta.env.SERVER}/add_to_activity`, {
                 meeting_code: meetingCode
             });
   // navigate(`/${meetingCode}`);
@@ -35,7 +35,7 @@ alert("Cannot join the meeting, server error");
   };
 
   function handleLogout() {
-    axios.post('http://localhost:3000/logout')
+    axios.post(`${import.meta.env.SERVER}/logout`)
       .then(response => {
         console.log('Logged out successfully');
         navigate('/');
