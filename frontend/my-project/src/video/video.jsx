@@ -15,7 +15,7 @@ import styles from "../styles/videoComponent.module.css";
 //it contains ready to use react components for material design icons  
 
 
-const server_url = `${import.meta.env.SERVER}/`; 
+const server_url = `${import.meta.env.SERVER}/`;
 
 var connections = {};
 

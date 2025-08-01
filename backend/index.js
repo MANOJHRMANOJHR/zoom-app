@@ -60,9 +60,8 @@ async function run() {
 }
 run().catch(console.dir);
 
-
 /*
-mongoose.connect(process.env.dbhost).then((res) => { //database creation using connect /myzoomdatabase
+mongoose.connect(`${process.env.dbhost}`).then((res) => { //database creation using connect /myzoomdatabase
     console.log("Connected to the database ", res.connection.host);
 }
 ).catch((err) => {
