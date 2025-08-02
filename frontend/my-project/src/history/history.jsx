@@ -2,6 +2,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,7 +20,7 @@ export default function History() {
     useEffect(() => {
         const fetchHistory = async () => {
             try {
-               let request = await client.post(`${import.meta.env.SERVER}/get_all_activity`);
+               let request = await axios.post(`${import.meta.env.SERVER}/get_all_activity`);
                 setMeetings(request.data);
             } catch(err){
                 console.log(err);
