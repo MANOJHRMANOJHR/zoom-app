@@ -3,9 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const { createioserver } = require('./controllers/socket');
 
-//const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const cook = require('cookie-parser');
-const { MongoClient, ServerApiVersion } = require('mongodb');
+//const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const http = require('http');
 const port = process.env.PORT || 3000;
@@ -31,42 +31,6 @@ app.use(
 
 app.use('/', require('./routers/userroutes'));
 
-/*
-const db = client.db("myDatabase");  // "myDatabase" may not exist yet
-const collection = db.collection("myCollection");
-await collection.insertOne({ name: "test" });  // Now the DB and collection are created
-*/
-
-
-const uri = process.env.dbhost;
-//mongodb+srv://manojhr:manojMSMK00@cluster0.posmtzg.mongodb.net/myDatabase?retryWrites=true&w=majority
-//mongodb is the appended database
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
-async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  }catch (err) {
-    console.error("❌ DB connection failed");
-    console.error(err);
-    process.exit(1); // Stop the app if DB fails
-  }
-}
-run().catch(console.dir);
-
-/*
 mongoose.connect(`${process.env.dbhost}`).then((res) => { //database creation using connect /myzoomdatabase
     console.log("Connected to the database ", res.connection.host);
 }
@@ -74,7 +38,7 @@ mongoose.connect(`${process.env.dbhost}`).then((res) => { //database creation us
     console.log("Error connecting to the database", err);
 }
 );
-*/
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
