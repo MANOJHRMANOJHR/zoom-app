@@ -1,4 +1,5 @@
 const { Server } = require("socket.io");
+require("dotenv").config();// important declaration to use process or environment variables
 
 let connections = {}
 let messages = {}
@@ -7,8 +8,8 @@ let timeOnline = {}
 const createioserver = (server) => { 
     const io = new Server(server, {
         cors: {
-           origin: "*",
-          //   origin: "http://localhost:5173",
+          // origin: "*",
+             origin: process.env.CLIENT_URL,
             methods: ["GET", "POST", "PUT", "DELETE", "PATCH"]
         }
     });
