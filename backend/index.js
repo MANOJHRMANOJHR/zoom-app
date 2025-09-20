@@ -22,7 +22,7 @@ app.use(cook());
 app.use(
     cors({
      // origin: "http://localhost:5173", // Replace with your frontend URL
-     origin: "*",
+      origin: "*",
       credentials: true, // Allow credentials (cookies, authorization headers)
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // List all methods explicitly
       allowedHeaders: ["Content-Type", "Authorization"], // Optional: Add allowed headers
@@ -31,11 +31,16 @@ app.use(
 
 app.use('/', require('./routers/userroutes'));
 
-
-
+/*
+const db = client.db("myDatabase");  // "myDatabase" may not exist yet
+const collection = db.collection("myCollection");
+await collection.insertOne({ name: "test" });  // Now the DB and collection are created
+*/
 
 
 const uri = process.env.dbhost;
+//mongodb+srv://manojhr:manojMSMK00@cluster0.posmtzg.mongodb.net/myDatabase?retryWrites=true&w=majority
+//mongodb is the appended database
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -53,9 +58,10 @@ async function run() {
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+  }catch (err) {
+    console.error("❌ DB connection failed");
+    console.error(err);
+    process.exit(1); // Stop the app if DB fails
   }
 }
 run().catch(console.dir);
