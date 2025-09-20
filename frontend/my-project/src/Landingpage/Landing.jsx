@@ -13,7 +13,7 @@ const Landing = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="h-screen w-screen overflow-hidden bg-cover bg-[url('./background.png')]"> 
+  <div className="h-screen w-screen overflow-hidden bg-cover bg-[url('/background.png')]">
         <Navbar />
         <div className="w-full h-[calc(100vh-64px)] flex flex-col-reverse lg:flex-row justify-between px-8 lg:px-16 items-center">
           {/* Left Section */}
